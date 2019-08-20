@@ -2,6 +2,8 @@ package com.example.matchtimeconverter;
 
 import com.example.matchtimeconverter.service.MatchTimeTransformerService;
 import com.example.matchtimeconverter.util.FileReaderUtil;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
@@ -19,11 +21,11 @@ public final class ShellCommands {
   }
 
   @ShellMethod(value = "Convert the match times in the file provided.", key = "convert")
-  public void convertMatchTimesAndPrint(String path) {
-    fileReaderUtil.readFile(path)
+  public List<String> convertMatchTimesAndPrint(String path) {
+    return fileReaderUtil.readFile(path)
         .stream()
         .map(matchTimeTransformerService::transformMatchTime)
-        .forEach(System.out::println);
+        .collect(Collectors.toList());
   }
 
 }

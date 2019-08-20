@@ -22,7 +22,8 @@ public class FileReaderUtilTest {
 
   @Test
   public void testFileReaderReadsFileLineByLine(){
-    List<String> expectedOutput = Arrays.asList("[PM] 0:00.000", "[H1] 10:30.200");
+    List<String> expectedOutput = Arrays
+        .asList("[PM] 0:00.000", "[H1] 10:30.200", "[PT] 50:12.241");
     assertEquals("", expectedOutput, fileReaderUtil.readFile("src/test/resources/test.data"));
   }
 
