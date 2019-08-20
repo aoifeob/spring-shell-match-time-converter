@@ -1,0 +1,13 @@
+com/example/matchtimeconverter/model/MatchTimeOutput$MatchTimeOutputBuilder.class
+com/example/matchtimeconverter/service/FormattingService.class
+com/example/matchtimeconverter/util/FileReaderUtil.class
+com/example/matchtimeconverter/service/TimeTransformerService.class
+com/example/matchtimeconverter/service/PeriodTransformerService.class
+com/example/matchtimeconverter/MatchTimeConverterApplication.class
+com/example/matchtimeconverter/model/MatchTimeOutput.class
+com/example/matchtimeconverter/factory/MatchTimeOutputFactory.class
+com/example/matchtimeconverter/service/InputValidationService.class
+com/example/matchtimeconverter/service/MatchTimeInputParsingService.class
+com/example/matchtimeconverter/model/MatchTimeInput.class
+com/example/matchtimeconverter/service/MatchTimeTransformerService.class
+com/example/matchtimeconverter/model/MatchTimeInput$MatchTimeInputBuilder.class
