@@ -9,6 +9,7 @@ Corresponding Output: `10:46 - FIRST_HALF`
 Example Input: `[H2] 95:09.162`, Corresponding Output: `90:00 + 05:09 - SECOND_HALF`
 
 ## Assumptions Made
+* The end user may want to supply a file of their choice to the application, so the application should allow the user to supply the file name or path rather than hardcoding it.
 * Inputs with a period of "PM", "HT", and "FT" should be considered valid even if the timestamp provided does not match their expected value ("0:00.000", "45:00.000", and "90:00.000", respectively). If required, these periods could easily be validated against the expected value by adding an additional method to `InputValidationService` to be called after line 31 of `MatchTimeTransformerService`. Example below:
 ```
 private static final Map<String, String> validTimesForPeriod = ImmutableList.of(
