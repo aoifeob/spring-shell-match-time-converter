@@ -1,6 +1,8 @@
 # Application Description
 This Spring Boot-driven command line application uses Spring Shell to read a text file containing match time String inputs in a specific format, and converts the Strings to another specific format to print them to the command line.
 
+A version without Spring Shell can be found [here](https://github.com/aoifeob/match-time-converter).
+
 Example Input: `[H1] 10:45.783`,
 Corresponding Output: `10:46 - FIRST_HALF`
 
