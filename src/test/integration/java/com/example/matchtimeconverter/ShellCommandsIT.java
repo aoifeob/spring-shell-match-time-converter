@@ -6,7 +6,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -43,7 +42,6 @@ public class ShellCommandsIT {
 
   @Test
   public void testConvertShellCommandFileExists() {
-    String file = new File("src/test/resources/test.data").toString();
     Map<String, MethodTarget> commands = shell.listCommands();
     MethodTarget convertCommand = commands.get("convert");
     assertNotNull("Convert command should exist", convertCommand);
