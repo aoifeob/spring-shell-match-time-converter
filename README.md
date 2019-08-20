@@ -29,6 +29,7 @@ boolean isTimeValidForPeriod(MatchTimeInput matchTimeInput){
   return false;
 }
 ```    
+* Similarly, inputs with a period of "H1" and a timestamp of 0:00.000, or a period of "H2" and a timestamp of before 45:00.000 are considered valid. If required, this could also be validated.
 * Any value of seconds greater than 59 (not counting milliseconds) should be considered invalid. The additional seconds will not be converted and added to the minutes value.
 * Any value of milliseconds greater than 999 should be considered invalid. The additional milliseconds will not be converted and added to the seconds and/or minutes value.
 * A 3-digit match number may be considered valid if and only if the first digit is 1, as a match time above 100 minutes could still be considered valid due to extra time, but a match time above 199 minutes (not counting seconds or milliseconds) seems unlikely for this use case. However, match times greater than 199 minutes could easily be allowed by making a simple change to the regex in `InputValidationService`.
