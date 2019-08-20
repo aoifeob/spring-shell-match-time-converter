@@ -23,46 +23,49 @@ public class MatchTimeOutputFactoryTest {
     MatchTimeOutput actualOutput = MatchTimeOutput.builder()
         .minutes(47)
         .seconds(12)
-        .period("Second Half")
+        .period("SECOND_HALF")
         .build();
-    String expectedOutput = "47:12 - Second Half";
+    String expectedOutput = "47:12 - SECOND_HALF";
     assertEquals("String output should match expected value", expectedOutput, matchTimeOutputFactory.getMatchTimeOutputAsString(actualOutput));
   }
 
   @Test
   public void getMatchTimeOutputAsStringWithAdditionalMinutesIsCorrect(){
     MatchTimeOutput actualOutput = MatchTimeOutput.builder()
-        .minutes(47)
-        .seconds(12)
+        .minutes(45)
+        .seconds(00)
         .additionalMinutes(1)
-        .period("Second Half")
+        .hasAdditionalTime(true)
+        .period("FIRST_HALF")
         .build();
-    String expectedOutput = "47:12 + 01:00 - Second Half";
+    String expectedOutput = "45:00 + 01:00 - FIRST_HALF";
     assertEquals("String output should match expected value", expectedOutput, matchTimeOutputFactory.getMatchTimeOutputAsString(actualOutput));
   }
 
   @Test
   public void getMatchTimeOutputAsStringWithAdditionalSecondsIsCorrect(){
     MatchTimeOutput actualOutput = MatchTimeOutput.builder()
-        .minutes(47)
-        .seconds(12)
+        .minutes(45)
+        .seconds(00)
         .additionalSeconds(5)
-        .period("Second Half")
+        .hasAdditionalTime(true)
+        .period("FIRST_HALF")
         .build();
-    String expectedOutput = "47:12 + 00:05 - Second Half";
+    String expectedOutput = "45:00 + 00:05 - FIRST_HALF";
     assertEquals("String output should match expected value", expectedOutput, matchTimeOutputFactory.getMatchTimeOutputAsString(actualOutput));
   }
 
   @Test
   public void getMatchTimeOutputAsStringWithAdditionalMinutesAndSecondsIsCorrect(){
     MatchTimeOutput actualOutput = MatchTimeOutput.builder()
-        .minutes(47)
-        .seconds(12)
+        .minutes(45)
+        .seconds(00)
         .additionalMinutes(1)
         .additionalSeconds(30)
-        .period("Second Half")
+        .hasAdditionalTime(true)
+        .period("FIRST_HALF")
         .build();
-    String expectedOutput = "47:12 + 01:30 - Second Half";
+    String expectedOutput = "45:00 + 01:30 - FIRST_HALF";
     assertEquals("String output should match expected value", expectedOutput, matchTimeOutputFactory.getMatchTimeOutputAsString(actualOutput));
   }
 

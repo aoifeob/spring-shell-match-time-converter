@@ -9,5 +9,6 @@ com/example/matchtimeconverter/factory/MatchTimeOutputFactory.class
 com/example/matchtimeconverter/service/InputValidationService.class
 com/example/matchtimeconverter/service/MatchTimeInputParsingService.class
 com/example/matchtimeconverter/model/MatchTimeInput.class
+com/example/matchtimeconverter/ShellCommands.class
 com/example/matchtimeconverter/service/MatchTimeTransformerService.class
 com/example/matchtimeconverter/model/MatchTimeInput$MatchTimeInputBuilder.class

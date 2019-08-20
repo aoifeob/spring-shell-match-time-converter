@@ -15,7 +15,7 @@ public final class MatchTimeOutputFactory {
 
   private static final Map<String, Integer> MAX_TIME_PER_HALF = ImmutableMap.of
       ("H1", 45,
-       "H2", 90);
+          "H2", 90);
 
   private final PeriodTransformerService periodTransformerService;
   private final TimeTransformerService timeTransformerService;
@@ -34,7 +34,7 @@ public final class MatchTimeOutputFactory {
     if (MAX_TIME_PER_HALF.containsKey(matchTimeInput.getPeriod())) {
       int maxTime = MAX_TIME_PER_HALF.get(matchTimeInput.getPeriod());
       return matchTimeInput.getMinutes() > maxTime ||
-          (matchTimeInput.getMinutes() == maxTime && matchTimeInput.getSeconds() > 0);
+          (matchTimeInput.getMinutes() == maxTime && matchTimeInput.getSeconds() > 0.000d);
     }
     return false;
   }
@@ -44,6 +44,7 @@ public final class MatchTimeOutputFactory {
     matchTimeOutput.period(periodTransformerService.getLongFormPeriod(matchTimeInput.getPeriod()));
 
     if (hasAdditionalTime(matchTimeInput)){
+      matchTimeOutput.hasAdditionalTime(true);
       matchTimeOutput.minutes(MAX_TIME_PER_HALF.get(matchTimeInput.getPeriod()));
       matchTimeOutput.additionalMinutes(
           matchTimeInput.getMinutes() - MAX_TIME_PER_HALF.get(matchTimeInput.getPeriod()));
@@ -63,11 +64,13 @@ public final class MatchTimeOutputFactory {
     output.append(formattingService.padSingleDigitValueToTwoDigits(matchTimeOutput.getMinutes()))
         .append(":")
         .append(formattingService.padSingleDigitValueToTwoDigits(matchTimeOutput.getSeconds()));
-    if (matchTimeOutput.getAdditionalMinutes() > 0 || matchTimeOutput.getAdditionalSeconds() > 0) {
-        output.append(" + ")
-            .append(formattingService.padSingleDigitValueToTwoDigits(matchTimeOutput.getAdditionalMinutes()))
-            .append(":")
-            .append(formattingService.padSingleDigitValueToTwoDigits(matchTimeOutput.getAdditionalSeconds()));
+    if (matchTimeOutput.hasAdditionalTime()) {
+      output.append(" + ")
+          .append(formattingService
+              .padSingleDigitValueToTwoDigits(matchTimeOutput.getAdditionalMinutes()))
+          .append(":")
+          .append(formattingService
+              .padSingleDigitValueToTwoDigits(matchTimeOutput.getAdditionalSeconds()));
     }
     output.append(" - ")
         .append(matchTimeOutput.getPeriod());

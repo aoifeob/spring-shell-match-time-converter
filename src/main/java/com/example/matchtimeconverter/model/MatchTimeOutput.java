@@ -12,5 +12,9 @@ public class MatchTimeOutput {
   private final int additionalMinutes;
   private final int additionalSeconds;
   private final String period;
+  private final boolean hasAdditionalTime;
 
+  public boolean hasAdditionalTime() {
+    return hasAdditionalTime;
+  }
 }
